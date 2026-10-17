@@ -1,0 +1,8 @@
+export { default as LoginPage } from './LoginPage'
+export { default as RegisterPage } from './RegisterPage'
+export { default as DashboardPage } from './DashboardPage'
+export { default as PropertiesPage } from './PropertiesPage'
+export { default as PropertyDetailPage } from './PropertyDetailPage'
+export { default as UnitsPage } from './UnitsPage'
+export { default as TenantsPage } from './TenantsPage'
+export { default as LeasesPage } from './LeasesPage'
