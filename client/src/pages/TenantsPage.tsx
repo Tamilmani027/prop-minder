@@ -14,8 +14,8 @@ export default function TenantsPage() {
     <div>
       <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Tenants</h1>
-          <p className="text-gray-500 mt-1">Manage your tenants</p>
+          <h1 className="text-2xl font-bold text-[#1a1f1a]">Tenants</h1>
+          <p className="text-[#5a6b5a] mt-1">Manage your tenants</p>
         </div>
         <Button variant="primary">
           <span className="flex items-center gap-2">
@@ -28,19 +28,19 @@ export default function TenantsPage() {
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-gray-200">
-              <th className="pb-3 text-sm font-medium text-gray-600">Name</th>
-              <th className="pb-3 text-sm font-medium text-gray-600">Phone</th>
-              <th className="pb-3 text-sm font-medium text-gray-600">Email</th>
-              <th className="pb-3 text-sm font-medium text-gray-600 text-right">Actions</th>
+            <tr className="border-b border-[#e0e8de]">
+              <th className="pb-3 text-sm font-medium text-[#647c64]">Name</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64]">Phone</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64]">Email</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64] text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
             {tenants?.data.map((tenant: any) => (
-              <tr key={tenant.id} className="border-b border-gray-100 hover:bg-gray-50">
-                <td className="py-3 text-gray-900 font-medium">{tenant.name}</td>
-                <td className="py-3 text-gray-600">{tenant.phone}</td>
-                <td className="py-3 text-gray-600">{tenant.email || '-'}</td>
+              <tr key={tenant.id} className="border-b border-[#e8f0e6] hover:bg-[#f4f7f4]">
+                <td className="py-3 text-[#1a1f1a] font-medium">{tenant.name}</td>
+                <td className="py-3 text-[#5a6b5a]">{tenant.phone}</td>
+                <td className="py-3 text-[#5a6b5a]">{tenant.email || '-'}</td>
                 <td className="py-3 text-right">
                   <Button variant="outline" className="text-sm">Edit</Button>
                 </td>

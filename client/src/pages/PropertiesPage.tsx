@@ -54,8 +54,8 @@ export default function PropertiesPage() {
     <div>
       <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Properties</h1>
-          <p className="text-gray-500 mt-1">Manage your properties</p>
+          <h1 className="text-2xl font-bold text-[#1a1f1a]">Properties</h1>
+          <p className="text-[#5a6b5a] mt-1">Manage your properties</p>
         </div>
         <Button onClick={() => setOpen(true)} variant="primary">
           <Plus className="h-4 w-4 mr-2" /> Add Property
@@ -65,19 +65,19 @@ export default function PropertiesPage() {
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-gray-200">
-              <th className="pb-3 text-sm font-medium text-gray-600">Name</th>
-              <th className="pb-3 text-sm font-medium text-gray-600">Address</th>
-              <th className="pb-3 text-sm font-medium text-gray-600">City</th>
-              <th className="pb-3 text-sm font-medium text-gray-600 text-right">Actions</th>
+            <tr className="border-b border-[#e0e8de]">
+              <th className="pb-3 text-sm font-medium text-[#647c64]">Name</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64]">Address</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64]">City</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64] text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
             {properties?.data.map((prop: Property) => (
-              <tr key={prop.id} className="border-b border-gray-100 hover:bg-gray-50">
-                <td className="py-3 text-gray-900 font-medium">{prop.name}</td>
-                <td className="py-3 text-gray-600">{prop.address}</td>
-                <td className="py-3 text-gray-600">{prop.city || '-'}</td>
+              <tr key={prop.id} className="border-b border-[#e8f0e6] hover:bg-[#f4f7f4]">
+                <td className="py-3 text-[#1a1f1a] font-medium">{prop.name}</td>
+                <td className="py-3 text-[#5a6b5a]">{prop.address}</td>
+                <td className="py-3 text-[#5a6b5a]">{prop.city || '-'}</td>
                 <td className="py-3 text-right">
                   <Button variant="outline" className="text-sm">
                     Units
@@ -92,7 +92,7 @@ export default function PropertiesPage() {
       {open && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <Card className="w-full max-w-md">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">Add Property</h2>
+            <h2 className="text-lg font-bold text-[#1a1f1a] mb-4">Add Property</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <Input
                 label="Name"

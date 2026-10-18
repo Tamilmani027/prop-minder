@@ -6,10 +6,10 @@ import { Card, Badge } from '../components/ui'
 function StatCard({ title, value, subtitle }: { title: string; value: string | number; subtitle: string }) {
   return (
     <Card className="p-5">
-      <h3 className="text-sm font-medium text-gray-500">{title}</h3>
+      <h3 className="text-sm font-medium text-[#5a6b5a]">{title}</h3>
       <div className="flex items-baseline mt-1">
-        <span className="text-2xl font-bold text-gray-900">{value}</span>
-        <span className="text-xs text-gray-400 ml-1">{subtitle}</span>
+        <span className="text-2xl font-bold text-[#1a1f1a]">{value}</span>
+        <span className="text-xs text-[#8da58d] ml-1">{subtitle}</span>
       </div>
     </Card>
   )
@@ -51,7 +51,7 @@ export default function DashboardPage() {
     console.log('[Dashboard] Rendering loading state')
     return (
       <div className="flex items-center justify-center h-64">
-        <p className="text-gray-500">Loading dashboard...</p>
+        <p className="text-[#5a6b5a]">Loading dashboard...</p>
       </div>
     )
   }
@@ -61,13 +61,13 @@ export default function DashboardPage() {
     console.log('[Dashboard] Rendering error state:', error)
     return (
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded text-red-700">
+        <h1 className="text-2xl font-bold text-[#1a1f1a]">Dashboard</h1>
+        <div className="mt-4 p-4 bg-[#fdecec] border border-[#f4c7c7] rounded text-[#b34545]">
           <p className="font-medium">Failed to load dashboard</p>
           <p className="text-sm mt-1">{error}</p>
           <button
             onClick={() => window.location.reload()}
-            className="mt-3 text-blue-600 hover:text-blue-500 text-sm"
+            className="mt-3 text-[#3d7a4f] hover:text-[#356b44] text-sm"
           >
             Retry
           </button>
@@ -81,8 +81,8 @@ export default function DashboardPage() {
     console.log('[Dashboard] Rendering no-data state')
     return (
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-        <p className="mt-4 text-gray-500">No data available.</p>
+        <h1 className="text-2xl font-bold text-[#1a1f1a]">Dashboard</h1>
+        <p className="mt-4 text-[#5a6b5a]">No data available.</p>
       </div>
     )
   }
@@ -93,13 +93,13 @@ export default function DashboardPage() {
     <div>
       <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-500 mt-1">
+          <h1 className="text-2xl font-bold text-[#1a1f1a]">Dashboard</h1>
+          <p className="text-[#5a6b5a] mt-1">
             Organization: {user?.orgId}
           </p>
         </div>
         <div className="flex gap-3">
-          <button className="px-3 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700">
+          <button className="px-3 py-2 bg-[#3d7a4f] text-white rounded-md text-sm hover:bg-[#356b44]">
             Generate Charges
           </button>
         </div>
@@ -114,29 +114,29 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="p-5">
-          <h3 className="text-sm font-medium text-gray-500">Charges</h3>
+          <h3 className="text-sm font-medium text-[#5a6b5a]">Charges</h3>
           <div className="flex items-baseline mt-1">
-            <span className="text-2xl font-bold text-gray-900">{data.counts.charges}</span>
+            <span className="text-2xl font-bold text-[#1a1f1a]">{data.counts.charges}</span>
           </div>
         </Card>
         <Card className="p-5">
-          <h3 className="text-sm font-medium text-gray-500">Occupancy</h3>
+          <h3 className="text-sm font-medium text-[#5a6b5a]">Occupancy</h3>
           <div className="flex items-baseline mt-1">
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-2xl font-bold text-[#1a1f1a]">
               {data.occupancy.unitsOccupied} / {data.occupancy.unitsTotal}
             </span>
           </div>
         </Card>
         <Card className="p-5">
-          <h3 className="text-sm font-medium text-gray-500">Period</h3>
+          <h3 className="text-sm font-medium text-[#5a6b5a]">Period</h3>
           <div className="flex items-baseline mt-1">
-            <span className="text-2xl font-bold text-gray-900">{data.period}</span>
+            <span className="text-2xl font-bold text-[#1a1f1a]">{data.period}</span>
           </div>
         </Card>
       </div>
 
       <div className="mb-8">
-        <h2 className="text-lg font-bold text-gray-900 mb-4">Status Breakdown</h2>
+        <h2 className="text-lg font-bold text-[#1a1f1a] mb-4">Status Breakdown</h2>
         <div className="flex gap-4">
           <Badge variant="paid">Paid: {data.counts.paid}</Badge>
           <Badge variant="partial">Partial: {data.counts.partial}</Badge>
@@ -146,27 +146,27 @@ export default function DashboardPage() {
       </div>
 
       <div className="mb-8">
-        <h2 className="text-lg font-bold text-gray-900 mb-4">Overdue Charges</h2>
+        <h2 className="text-lg font-bold text-[#1a1f1a] mb-4">Overdue Charges</h2>
         {data.overdueList.length === 0 ? (
-          <p className="text-gray-500">No overdue charges.</p>
+          <p className="text-[#5a6b5a]">No overdue charges.</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="pb-3 text-sm font-medium text-gray-600">Tenant</th>
-                  <th className="pb-3 text-sm font-medium text-gray-600">Unit</th>
-                  <th className="pb-3 text-sm font-medium text-gray-600">Due Date</th>
-                  <th className="pb-3 text-sm font-medium text-gray-600 text-right">Balance</th>
+                <tr className="border-b border-[#e0e8de]">
+                  <th className="pb-3 text-sm font-medium text-[#647c64]">Tenant</th>
+                  <th className="pb-3 text-sm font-medium text-[#647c64]">Unit</th>
+                  <th className="pb-3 text-sm font-medium text-[#647c64]">Due Date</th>
+                  <th className="pb-3 text-sm font-medium text-[#647c64] text-right">Balance</th>
                 </tr>
               </thead>
               <tbody>
                 {data.overdueList.map((item: { id: string; tenantName: string; unitLabel: string; dueDate: string; balancePaise: number }) => (
-                  <tr key={item.id} className="border-b border-gray-100">
-                    <td className="py-3 text-gray-900">{item.tenantName}</td>
-                    <td className="py-3 text-gray-900">{item.unitLabel}</td>
-                    <td className="py-3 text-gray-600">{item.dueDate}</td>
-                    <td className="py-3 text-right font-medium text-red-600">
+                  <tr key={item.id} className="border-b border-[#e8f0e6]">
+                    <td className="py-3 text-[#1a1f1a]">{item.tenantName}</td>
+                    <td className="py-3 text-[#1a1f1a]">{item.unitLabel}</td>
+                    <td className="py-3 text-[#5a6b5a]">{item.dueDate}</td>
+                    <td className="py-3 text-right font-medium text-[#b34545]">
                       {item.balancePaise / 100}
                     </td>
                   </tr>

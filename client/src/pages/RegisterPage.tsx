@@ -59,14 +59,14 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F4EEE4]">
+    <div className="min-h-screen flex items-center justify-center bg-[#f4f7f4]">
       <Card className="w-full max-w-md">
         <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Create account</h1>
-          <p className="text-gray-500 mt-2">Set up your organization</p>
+          <h1 className="text-2xl font-bold text-[#1a1f1a]">Create account</h1>
+          <p className="text-[#5a6b5a] mt-2">Set up your organization</p>
         </div>
         {serverError && (
-          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded text-sm">
+          <div className="mb-4 p-3 bg-[#fdecec] text-[#b34545] rounded text-sm">
             {serverError}
           </div>
         )}
@@ -101,15 +101,15 @@ export default function RegisterPage() {
             onChange={handleChange}
             error={errors.password}
           />
-          <Button type="submit" variant="" className="w-full bg-[#2A4A36] text-white" disabled={loading}>
+          <Button type="submit" variant="" className="w-full bg-[#3d7a4f] text-white" disabled={loading}>
             {loading ? 'Creating account...' : 'Create account'}
           </Button>
         </form>
-        <p className="mt-6 text-center text-sm text-gray-500">
+        <p className="mt-6 text-center text-sm text-[#5a6b5a]">
           Already have an account?{' '}
           <button
             onClick={() => navigate('/login')}
-            className="text-[#2A4A36] font-medium"
+            className="text-[#3d7a4f] font-medium"
           >
             Sign in
           </button>

@@ -24,8 +24,8 @@ export default function PropertyDetailPage() {
     <div>
       <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{property.name}</h1>
-          <p className="text-gray-500 mt-1">{property.address}, {property.city}</p>
+          <h1 className="text-2xl font-bold text-[#1a1f1a]">{property.name}</h1>
+          <p className="text-[#5a6b5a] mt-1">{property.address}, {property.city}</p>
         </div>
         <div className="flex gap-3">
           <Button
@@ -42,39 +42,39 @@ export default function PropertyDetailPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <Card className="p-5">
-          <h3 className="text-sm font-medium text-gray-500">Address</h3>
-          <p className="mt-1 text-gray-900">
+          <h3 className="text-sm font-medium text-[#5a6b5a]">Address</h3>
+          <p className="mt-1 text-[#1a1f1a]">
             {property.address}, {property.city || ''}
           </p>
         </Card>
         <Card className="p-5">
-          <h3 className="text-sm font-medium text-gray-500">Total Units</h3>
+          <h3 className="text-sm font-medium text-[#5a6b5a]">Total Units</h3>
           <div className="flex items-baseline mt-1">
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-2xl font-bold text-[#1a1f1a]">
               {units?.data.length || 0}
             </span>
           </div>
         </Card>
       </div>
 
-      <h2 className="text-lg font-bold text-gray-900 mb-4">Units</h2>
+      <h2 className="text-lg font-bold text-[#1a1f1a] mb-4">Units</h2>
       {units?.data.length === 0 ? (
-        <p className="text-gray-500">No units yet. Add your first unit.</p>
+        <p className="text-[#5a6b5a]">No units yet. Add your first unit.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="pb-3 text-sm font-medium text-gray-600">Label</th>
-                <th className="pb-3 text-sm font-medium text-gray-600">Notes</th>
-                <th className="pb-3 text-sm font-medium text-gray-600 text-right">Actions</th>
+              <tr className="border-b border-[#e0e8de]">
+                <th className="pb-3 text-sm font-medium text-[#647c64]">Label</th>
+                <th className="pb-3 text-sm font-medium text-[#647c64]">Notes</th>
+                <th className="pb-3 text-sm font-medium text-[#647c64] text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
               {units?.data.map((unit: any) => (
-                <tr key={unit.id} className="border-b border-gray-100 hover:bg-gray-50">
-                  <td className="py-3 text-gray-900 font-medium">{unit.label}</td>
-                  <td className="py-3 text-gray-600">{unit.notes || '-'}</td>
+                <tr key={unit.id} className="border-b border-[#e8f0e6] hover:bg-[#f4f7f4]">
+                  <td className="py-3 text-[#1a1f1a] font-medium">{unit.label}</td>
+                  <td className="py-3 text-[#5a6b5a]">{unit.notes || '-'}</td>
                   <td className="py-3 text-right">
                     <Button variant="outline" className="text-sm">Manage</Button>
                   </td>

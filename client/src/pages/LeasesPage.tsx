@@ -14,8 +14,8 @@ export default function LeasesPage() {
     <div>
       <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Leases</h1>
-          <p className="text-gray-500 mt-1">Manage your leases</p>
+          <h1 className="text-2xl font-bold text-[#1a1f1a]">Leases</h1>
+          <p className="text-[#5a6b5a] mt-1">Manage your leases</p>
         </div>
         <Button variant="primary">
           <span className="flex items-center gap-2">
@@ -28,20 +28,20 @@ export default function LeasesPage() {
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-gray-200">
-              <th className="pb-3 text-sm font-medium text-gray-600">Unit</th>
-              <th className="pb-3 text-sm font-medium text-gray-600">Tenant</th>
-              <th className="pb-3 text-sm font-medium text-gray-600">Rent</th>
-              <th className="pb-3 text-sm font-medium text-gray-600">Status</th>
-              <th className="pb-3 text-sm font-medium text-gray-600 text-right">Actions</th>
+            <tr className="border-b border-[#e0e8de]">
+              <th className="pb-3 text-sm font-medium text-[#647c64]">Unit</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64]">Tenant</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64]">Rent</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64]">Status</th>
+              <th className="pb-3 text-sm font-medium text-[#647c64] text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
             {leases?.data.map((lease: any) => (
-              <tr key={lease.id} className="border-b border-gray-100 hover:bg-gray-50">
-                <td className="py-3 text-gray-900">{lease.unitId}</td>
-                <td className="py-3 text-gray-900">{lease.tenantId}</td>
-                <td className="py-3 text-gray-600">{lease.rentPaise / 100}</td>
+              <tr key={lease.id} className="border-b border-[#e8f0e6] hover:bg-[#f4f7f4]">
+                <td className="py-3 text-[#1a1f1a]">{lease.unitId}</td>
+                <td className="py-3 text-[#1a1f1a]">{lease.tenantId}</td>
+                <td className="py-3 text-[#5a6b5a]">{lease.rentPaise / 100}</td>
                 <td className="py-3">
                   <Badge variant={lease.status === 'active' ? 'active' : 'ended'}>
                     {lease.status}

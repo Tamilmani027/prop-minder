@@ -6,12 +6,12 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 export function Badge({ variant = 'active', className, ...props }: BadgeProps) {
   const variants = {
-    active: 'bg-green-100 text-green-700',
-    ended: 'bg-gray-100 text-gray-700',
-    paid: 'bg-green-100 text-green-700',
-    partial: 'bg-yellow-100 text-yellow-700',
-    overdue: 'bg-red-100 text-red-700',
-    pending: 'bg-blue-100 text-blue-700',
+    active: 'bg-[#eef2ec] text-[#3d7a4f]',
+    ended: 'bg-[#f4f7f4] text-[#647c64]',
+    paid: 'bg-[#eef2ec] text-[#3d7a4f]',
+    partial: 'bg-[#fdf3e3] text-[#9a6a1e]',
+    overdue: 'bg-[#fdecec] text-[#b34545]',
+    pending: 'bg-[#eef4fb] text-[#2f6f9f]',
   }
 
   return (
