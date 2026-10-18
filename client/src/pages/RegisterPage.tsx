@@ -22,7 +22,7 @@ export default function RegisterPage() {
   // Redirect after registration succeeds (avoids calling navigate during render)
   useEffect(() => {
     if (redirectTo) {
-      navigate(redirectTo)
+      navigate(redirectTo, { replace: true })
     }
   }, [redirectTo, navigate])
 
@@ -59,7 +59,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center bg-[#F4EEE4]">
       <Card className="w-full max-w-md">
         <div className="text-center mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Create account</h1>
@@ -101,7 +101,7 @@ export default function RegisterPage() {
             onChange={handleChange}
             error={errors.password}
           />
-          <Button type="submit" variant="primary" className="w-full" disabled={loading}>
+          <Button type="submit" variant="" className="w-full bg-[#2A4A36] text-white" disabled={loading}>
             {loading ? 'Creating account...' : 'Create account'}
           </Button>
         </form>
@@ -109,7 +109,7 @@ export default function RegisterPage() {
           Already have an account?{' '}
           <button
             onClick={() => navigate('/login')}
-            className="text-blue-600 hover:text-blue-500 font-medium"
+            className="text-[#2A4A36] font-medium"
           >
             Sign in
           </button>

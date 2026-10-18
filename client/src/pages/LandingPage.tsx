@@ -125,19 +125,26 @@ function Navbar({
 /* ── Hero ── */
 function HeroSection() {
     return (
-        <section className="bg-[#eef2ec] pt-[72px]">
-            <div className="max-w-[1200px] mx-auto px-8 pt-20">
+        <section className="relative h-screen overflow-hidden ">
+            {/* Background image & overlay */}
+            <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat h-16rem"
+                style={{ backgroundImage: "url('/propimage.jpg')" }}
+            />
+            <div className="absolute inset-0  from-[#0f1711]/88 via-[#131f15]/82 to-[#0c140d]/92" />
+
+            <div className="relative max-w-[1200px] mx-auto px-8 pt-20">
                 {/* Badge */}
                 <div className="flex justify-center mb-8">
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#2e4f35] text-[#8dc89e] text-xs font-medium rounded-full">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#5fb97a] inline-block" />
+                    <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[black]/80 backdrop-blur-sm border border-[#3d7a4f]/40 text-[#8dc89e] text-xs font-medium rounded-full shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[white] inline-block animate-pulse" />
                         A little less admin. A lot more clarity.
                     </span>
                 </div>
 
                 {/* Headline */}
                 <h1
-                    className="text-center text-[#1a1f1a] font-bold leading-[1.1] tracking-[-0.03em] mb-6"
+                    className="text-center text-white font-bold leading-[1.1] tracking-[-0.03em] mb-6 display-flex"
                     style={{ fontSize: 'clamp(42px, 6vw, 72px)' }}
                 >
                     Your properties.
@@ -145,38 +152,40 @@ function HeroSection() {
                     Your peace of mind.
                 </h1>
 
-                {/* Subheading */}
-                <p className="text-center text-[#5a6b5a] text-lg leading-relaxed max-w-xl mx-auto mb-10">
+                {/* Subheading 
+                <p className="text-center text-black text-[#c5d8c5] text-lg leading-relaxed max-w-xl mx-auto mb-10">
                     Bring your properties, tenants, and payments together.
                     <br />
                     One calm workspace to keep your portfolio moving.
                 </p>
+                */}
 
                 {/* CTAs */}
                 <div className="flex items-center justify-center gap-3 mb-4">
                     <Link
                         to="/register"
-                        className="flex items-center gap-2 px-5 py-2.5 bg-[#2e4f35] hover:bg-[#243f2a] text-white text-sm font-medium rounded-lg transition-colors"
+                        className="flex items-center gap-2 px-5 py-2.5 bg-[#3d7a4f] hover:bg-[#356b44] text-white text-sm font-medium rounded-lg transition-all shadow-md shadow-[#3d7a4f]/25 hover:shadow-lg hover:shadow-[#3d7a4f]/40"
                     >
                         Get started free <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                     <Link
                         to="/dashboard"
-                        className="flex items-center gap-2 px-5 py-2.5 bg-[#1a1f1a] hover:bg-[#2a302a] text-white text-sm font-medium rounded-lg transition-colors"
+                        className="flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/20 text-white border border-white/20 text-sm font-medium rounded-lg transition-colors backdrop-blur-sm"
                     >
                         Explore the dashboard
                     </Link>
                 </div>
 
-                <p className="text-center text-[#8a9e8a] text-xs mb-12">
+                {/*<p className="text-center text-[#8da58d] text-xs mb-12">
                     Free for up to 3 units · No credit card required
                 </p>
+                */}
 
                 {/* Hero cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-stretch">
                     {/* Left: free tier card */}
-                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#e0e8de]">
-                        <p className="text-[#8a9e8a] text-xs font-medium mb-3">Free for up to 3 units</p>
+                    <div className="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/40">
+                        <p className="text-[#647c64] text-xs font-semibold mb-3">Free for up to 3 units</p>
                         <h3 className="text-[#1a1f1a] text-xl font-bold mb-4">No credit card required</h3>
                         <ul className="space-y-2.5 mb-5">
                             {[
@@ -187,18 +196,18 @@ function HeroSection() {
                                     <span className="w-4 h-4 rounded-full bg-[#eef2ec] border border-[#3d7a4f] flex items-center justify-center flex-shrink-0 mt-0.5">
                                         <Check className="w-2.5 h-2.5 text-[#3d7a4f]" />
                                     </span>
-                                    <span className="text-[#5a6b5a] text-[13px] leading-snug">{item}</span>
+                                    <span className="text-[#435543] text-[13px] leading-snug">{item}</span>
                                 </li>
                             ))}
                         </ul>
-                        <div className="border-t border-[#eef2ec] pt-4">
+                        <div className="border-t border-[#e2ece0] pt-4">
                             <div className="flex items-center gap-2.5">
                                 <div className="w-7 h-7 rounded-md bg-[#eef2ec] flex items-center justify-center">
                                     <BarChart3 className="w-3.5 h-3.5 text-[#3d7a4f]" />
                                 </div>
                                 <div>
                                     <p className="text-[#1a1f1a] text-xs font-semibold">Portfolio clarity</p>
-                                    <p className="text-[#8a9e8a] text-[11px]">
+                                    <p className="text-[#647c64] text-[11px]">
                                         One workspace for properties, tenants, and payments.
                                     </p>
                                 </div>
@@ -206,8 +215,9 @@ function HeroSection() {
                         </div>
                     </div>
 
+
                     {/* Center: property photo */}
-                    <div className="rounded-2xl overflow-hidden min-h-[260px] md:min-h-0">
+                    <div className="rounded-2xl overflow-hidden min-h-[260px] md:min-h-0 border border-white/20 shadow-xl">
                         <img
                             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
                             alt="Modern apartment building"
@@ -215,8 +225,9 @@ function HeroSection() {
                         />
                     </div>
 
+
                     {/* Right: dashboard overview */}
-                    <div className="bg-[#1a1f1a] rounded-2xl p-6 shadow-sm">
+                    <div className="bg-[#141c14]/90 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/10">
                         <p className="text-[#8a9e8a] text-xs font-medium mb-3">Portfolio overview</p>
                         <h3 className="text-white text-xl font-bold mb-4">
                             Everything in
@@ -230,14 +241,14 @@ function HeroSection() {
                                 { icon: CreditCard, label: 'Payments' },
                             ].map(({ icon: Icon, label }) => (
                                 <li key={label} className="flex items-center gap-2.5">
-                                    <div className="w-6 h-6 rounded-md bg-[#2a3328] flex items-center justify-center">
+                                    <div className="w-6 h-6 rounded-md bg-[#222e20] flex items-center justify-center">
                                         <Icon className="w-3.5 h-3.5 text-[#5fb97a]" />
                                     </div>
                                     <span className="text-[#c8d8c8] text-sm">{label}</span>
                                 </li>
                             ))}
                         </ul>
-                        <div className="bg-[#2a3328] rounded-xl p-3 mt-2">
+                        <div className="bg-[#1e2a1d] rounded-xl p-3 mt-2 border border-white/5">
                             <p className="text-[#8a9e8a] text-[11px] mb-1">Free plan</p>
                             <p className="text-white text-sm font-semibold">
                                 Up to 3 units
@@ -249,7 +260,7 @@ function HeroSection() {
                 </div>
 
                 {/* Ticker */}
-                <div className="border-t border-[#d4e0d0] mt-8 py-4 flex items-center justify-center gap-6 flex-wrap">
+                <div className="border-t border-white mt-8 py-4 flex items-center justify-center gap-6 flex-wrap">
                     {[
                         { icon: Home, label: 'Every property' },
                         { icon: Users, label: 'Every tenant' },
@@ -257,9 +268,9 @@ function HeroSection() {
                         { icon: Check, label: 'All in one place' },
                     ].map(({ icon: Icon, label }, i) => (
                         <div key={label} className="flex items-center gap-2">
-                            {i > 0 && <span className="w-1 h-1 rounded-full bg-[#b0c8b0] mr-2" />}
-                            <Icon className="w-3.5 h-3.5 text-[#5a6b5a]" />
-                            <span className="text-[#5a6b5a] text-sm">{label}</span>
+                            {i > 0 && <span className="w-1 h-1 rounded-full bg-black/30 mr-2" />}
+                            <Icon className="w-3.5 h-3.5 text-[black] text-lg" />
+                            <span className="text-[black] text-lg font-extrabold">{label}</span>
                         </div>
                     ))}
                 </div>
