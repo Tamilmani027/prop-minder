@@ -19,10 +19,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const storedToken = localStorage.getItem('token')
     const storedUser = localStorage.getItem('user')
-    if (storedToken && storedUser) {
-      setToken(storedToken)
-      setUser(JSON.parse(storedUser))
+
+    // Only restore session if both values exist and are valid
+    if (storedToken && storedUser && storedUser !== 'undefined') {
+      try {
+        setToken(storedToken)
+        setUser(JSON.parse(storedUser))
+      } catch {
+        // Corrupted localStorage — clear it
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+      }
     }
+
     setIsLoading(false)
   }, [])
 

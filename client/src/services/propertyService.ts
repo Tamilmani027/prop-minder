@@ -1,12 +1,5 @@
-import type { Property } from '../types'
-import type { PropertyInput } from '../lib/validation'
-
-export interface PaginatedResponse<T> {
-  data: T[]
-  page: number
-  limit: number
-  total: number
-}
+import { api } from '../lib/api'
+import type { Property, PropertyInput, PaginatedResponse } from '../types'
 
 export const propertyService = {
   list: async (params?: {
@@ -14,22 +7,22 @@ export const propertyService = {
     page?: number
     limit?: number
   }): Promise<PaginatedResponse<Property>> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.get('/properties', { params }))
+    const res = await api.get('/properties', { params })
     return res.data
   },
   get: async (id: string): Promise<Property> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.get(`/properties/${id}`))
+    const res = await api.get(`/properties/${id}`)
     return res.data
   },
   create: async (data: PropertyInput): Promise<Property> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.post('/properties', data))
+    const res = await api.post('/properties', data)
     return res.data
   },
   update: async (id: string, data: Partial<PropertyInput>): Promise<Property> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.patch(`/properties/${id}`, data))
+    const res = await api.patch(`/properties/${id}`, data)
     return res.data
   },
   delete: async (id: string): Promise<void> => {
-    await import('../lib/api').then((m) => m.api.delete(`/properties/${id}`))
+    await api.delete(`/properties/${id}`)
   },
 }

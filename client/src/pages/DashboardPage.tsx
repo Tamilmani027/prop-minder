@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
+import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
-import { dashboardService } from '../services'
+import { api } from '../lib/api'
 import { Card, Badge } from '../components/ui'
 
 function StatCard({ title, value, subtitle }: { title: string; value: string | number; subtitle: string }) {
@@ -16,19 +16,78 @@ function StatCard({ title, value, subtitle }: { title: string; value: string | n
 }
 
 export default function DashboardPage() {
-  const { user } = useAuth()
-  const { data, isLoading } = useQuery({
-    queryKey: ['dashboard'],
-    queryFn: () => dashboardService.get(),
-  })
+  const { user, token } = useAuth()
+  const [data, setData] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  if (isLoading || !data) {
+  useEffect(() => {
+    console.log('[Dashboard] useEffect triggered, token:', token?.substring(0, 20) + '...')
+
+    const fetchDashboard = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+        console.log('[Dashboard] Fetching /api/v1/dashboard')
+
+        const res = await api.get('/dashboard')
+        console.log('[Dashboard] Response:', res.status, res.data)
+
+        // Backend wraps response in { data: {...} }
+        setData(res.data.data)
+      } catch (err: any) {
+        console.error('[Dashboard] Error:', err.response?.status, err.message)
+        setError(err.response?.data?.error?.message || err.message || 'Unknown error')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchDashboard()
+  }, [token])
+
+  // Loading state
+  if (loading) {
+    console.log('[Dashboard] Rendering loading state')
     return (
       <div className="flex items-center justify-center h-64">
         <p className="text-gray-500">Loading dashboard...</p>
       </div>
     )
   }
+
+  // Error state
+  if (error) {
+    console.log('[Dashboard] Rendering error state:', error)
+    return (
+      <div className="p-6">
+        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded text-red-700">
+          <p className="font-medium">Failed to load dashboard</p>
+          <p className="text-sm mt-1">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-3 text-blue-600 hover:text-blue-500 text-sm"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // No data
+  if (!data) {
+    console.log('[Dashboard] Rendering no-data state')
+    return (
+      <div className="p-6">
+        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+        <p className="mt-4 text-gray-500">No data available.</p>
+      </div>
+    )
+  }
+
+  console.log('[Dashboard] Rendering data state:', data)
 
   return (
     <div>

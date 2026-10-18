@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card, Input, Button } from '../components/ui'
 import { authService } from '../services'
@@ -17,6 +17,14 @@ export default function RegisterPage() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
   const [serverError, setServerError] = useState('')
+  const [redirectTo, setRedirectTo] = useState<string | null>(null)
+
+  // Redirect after registration succeeds (avoids calling navigate during render)
+  useEffect(() => {
+    if (redirectTo) {
+      navigate(redirectTo)
+    }
+  }, [redirectTo, navigate])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -26,20 +34,24 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log('[RegisterPage] submit clicked')
     setErrors({})
     setServerError('')
 
     try {
       const validated = registerSchema.parse(formData)
+      console.log('[RegisterPage] validated', validated)
       setLoading(true)
       const response = await authService.register(validated)
-      login(response.token, response.user)
-      navigate('/dashboard')
+      console.log('[RegisterPage] response', response)
+      login(response.data.token, response.data.user)
+      setRedirectTo('/dashboard')
     } catch (err: any) {
+      console.error('[RegisterPage] error', err)
       if (err.response?.data?.error?.details) {
         setErrors(err.response.data.error.details)
       } else {
-        setServerError('Registration failed. Please try again.')
+        setServerError(err.message || 'Registration failed. Please try again.')
       }
     } finally {
       setLoading(false)

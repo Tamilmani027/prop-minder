@@ -1,12 +1,5 @@
-import type { Lease } from '../types'
-import type { LeaseInput } from '../lib/validation'
-
-export interface PaginatedResponse<T> {
-  data: T[]
-  page: number
-  limit: number
-  total: number
-}
+import { api } from '../lib/api'
+import type { Lease, LeaseInput, PaginatedResponse } from '../types'
 
 export const leaseService = {
   list: async (params?: {
@@ -16,23 +9,23 @@ export const leaseService = {
     page?: number
     limit?: number
   }): Promise<PaginatedResponse<Lease>> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.get('/leases', { params }))
+    const res = await api.get('/leases', { params })
     return res.data
   },
   get: async (id: string): Promise<Lease> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.get(`/leases/${id}`))
+    const res = await api.get(`/leases/${id}`)
     return res.data
   },
   create: async (data: LeaseInput): Promise<Lease> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.post('/leases', data))
+    const res = await api.post('/leases', data)
     return res.data
   },
   update: async (id: string, data: Partial<LeaseInput>): Promise<Lease> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.patch(`/leases/${id}`, data))
+    const res = await api.patch(`/leases/${id}`, data)
     return res.data
   },
   end: async (id: string): Promise<Lease> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.post(`/leases/${id}/end`))
+    const res = await api.post(`/leases/${id}/end`)
     return res.data
   },
 }

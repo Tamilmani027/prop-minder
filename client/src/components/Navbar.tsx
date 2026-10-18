@@ -1,7 +1,8 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { Button } from './ui/Button'
 import { LogOut, LayoutDashboard, Building2, Home, User, FileText } from 'lucide-react'
+import { useEffect } from 'react'
 
 export function Navbar() {
   const { user, logout } = useAuth()
@@ -97,13 +98,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isLoading, user } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
 
   if (isLoading) return null
 
-  if (!user) {
-    navigate('/login')
-    return null
-  }
+  // Redirect to login if not authenticated (use effect to avoid render-time navigation)
+  useEffect(() => {
+    if (!user) {
+      navigate('/login', { replace: true })
+    }
+  }, [user, navigate])
+
+  if (!user) return null
 
   return <>{children}</>
 }

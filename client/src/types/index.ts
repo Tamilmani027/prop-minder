@@ -114,3 +114,43 @@ export interface DashboardData {
     balancePaise: number
   }>
 }
+
+export interface RegisterInput {
+  orgName: string
+  name: string
+  email: string
+  password: string
+}
+
+export interface LoginInput {
+  email: string
+  password: string
+}
+
+export interface PropertyInput {
+  name: string
+  address: string
+  city?: string
+}
+
+export interface UnitInput {
+  label: string
+  notes?: string
+}
+
+export interface TenantInput {
+  name: string
+  phone: string
+  email?: string
+  notes?: string
+}
+
+export interface LeaseInput {
+  unitId: string
+  tenantId: string
+  rentPaise: number
+  depositPaise: number
+  dueDay: number
+  startDate: string
+  endDate?: string
+}

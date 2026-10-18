@@ -1,12 +1,5 @@
-import type { Tenant } from '../types'
-import type { TenantInput } from '../lib/validation'
-
-export interface PaginatedResponse<T> {
-  data: T[]
-  page: number
-  limit: number
-  total: number
-}
+import { api } from '../lib/api'
+import type { Tenant, TenantInput, PaginatedResponse } from '../types'
 
 export const tenantService = {
   list: async (params?: {
@@ -14,22 +7,22 @@ export const tenantService = {
     page?: number
     limit?: number
   }): Promise<PaginatedResponse<Tenant>> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.get('/tenants', { params }))
+    const res = await api.get('/tenants', { params })
     return res.data
   },
   get: async (id: string): Promise<Tenant> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.get(`/tenants/${id}`))
+    const res = await api.get(`/tenants/${id}`)
     return res.data
   },
   create: async (data: TenantInput): Promise<Tenant> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.post('/tenants', data))
+    const res = await api.post('/tenants', data)
     return res.data
   },
   update: async (id: string, data: Partial<TenantInput>): Promise<Tenant> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.patch(`/tenants/${id}`, data))
+    const res = await api.patch(`/tenants/${id}`, data)
     return res.data
   },
   delete: async (id: string): Promise<void> => {
-    await import('../lib/api').then((m) => m.api.delete(`/tenants/${id}`))
+    await api.delete(`/tenants/${id}`)
   },
 }

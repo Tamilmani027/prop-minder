@@ -1,3 +1,4 @@
+import { api } from '../lib/api'
 import type { User, AuthResponse } from '../types'
 
 export interface RegisterInput {
@@ -14,15 +15,19 @@ export interface LoginInput {
 
 export const authService = {
   register: async (data: RegisterInput): Promise<AuthResponse> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.post('/auth/register', data))
-    return res
+    console.log('[authService.register]', data.email)
+    const res = await api.post<AuthResponse>('/auth/register', data)
+    console.log('[authService.register] success', res.data)
+    return res.data
   },
   login: async (data: LoginInput): Promise<AuthResponse> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.post('/auth/login', data))
-    return res
+    console.log('[authService.login]', data.email)
+    const res = await api.post<AuthResponse>('/auth/login', data)
+    console.log('[authService.login] success', res.data)
+    return res.data
   },
   getCurrentUser: async (): Promise<User> => {
-    const { data: res } = await import('../lib/api').then((m) => m.api.get('/auth/me'))
-    return res.data
+    const res = await api.get<{ data: User }>('/auth/me')
+    return res.data.data
   },
 }

@@ -14,12 +14,17 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
+  console.log('[API REQUEST]', config.method?.toUpperCase(), config.url)
   return config
 })
 
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log('[API RESPONSE]', response.status, response.config.url)
+    return response
+  },
   (error) => {
+    console.error('[API ERROR]', error.response?.status, error.config?.url, error.message)
     if (error.response?.status === 401) {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
@@ -28,5 +33,3 @@ api.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-
-export type { AxiosResponse } from 'axios'
