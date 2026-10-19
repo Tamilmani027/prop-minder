@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           cache: 'npm'
           cache-dependency-path: |
             ./server/package-lock.json
@@ -31,7 +31,7 @@ jobs:
       - name: Typecheck client
         working-directory: ./client
         run: |
-          npm ci
+          npm install
           npm run typecheck
 
       - name: Build server
