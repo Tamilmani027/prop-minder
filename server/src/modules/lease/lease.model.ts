@@ -31,7 +31,11 @@ const leaseSchema = new mongoose.Schema<LeaseDoc, LeaseModel>(
     endDate: { type: Date },
     status: { type: String, enum: ["active", "ended"], default: "active" },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 // tenantPlugin adds the orgId field (required, indexed) and tenant scoping.

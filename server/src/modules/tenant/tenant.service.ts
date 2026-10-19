@@ -14,7 +14,16 @@ const escapeRegExp = (value: string): string => {
 
 export async function createTenant(
   orgId: mongoose.Types.ObjectId,
-  input: { name: string; phone: string; email?: string; notes?: string }
+  input: {
+    name: string;
+    phone: string;
+    email?: string;
+    notes?: string;
+    propertyId?: string;
+    unitId?: string;
+    monthlyRent?: number;
+    dueDate?: string;
+  }
 ) {
   const tenant = await Tenant.create({
     orgId,
@@ -22,6 +31,10 @@ export async function createTenant(
     phone: input.phone,
     email: input.email,
     notes: input.notes,
+    propertyId: input.propertyId,
+    unitId: input.unitId,
+    monthlyRent: input.monthlyRent,
+    dueDate: input.dueDate,
   } as any);
   // Mongoose typed create() doesn't accept a plain object literal; cast
   // through any. Return type cast through unknown for the service boundary.

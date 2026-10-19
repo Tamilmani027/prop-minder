@@ -3,11 +3,13 @@ import { propertyService } from '../services'
 import { Card, Button, Input } from '../components/ui'
 import { propertySchema } from '../lib/validation'
 import { Plus } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import type { Property } from '../types'
 import { useState } from 'react'
 
 export default function PropertiesPage() {
   const queryClient = useQueryClient()
+  const navigate = useNavigate()
   const { data: properties, isLoading } = useQuery({
     queryKey: ['properties'],
     queryFn: () => propertyService.list({}),
@@ -79,7 +81,11 @@ export default function PropertiesPage() {
                 <td className="py-3 text-[#5a6b5a]">{prop.address}</td>
                 <td className="py-3 text-[#5a6b5a]">{prop.city || '-'}</td>
                 <td className="py-3 text-right">
-                  <Button variant="outline" className="text-sm">
+                  <Button
+                    variant="outline"
+                    className="text-sm"
+                    onClick={() => navigate(`/properties/${prop.id}/units`)}
+                  >
                     Units
                   </Button>
                 </td>

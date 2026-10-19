@@ -8,6 +8,10 @@ export interface TenantDoc {
   phone: string;
   email?: string;
   notes?: string;
+  propertyId?: mongoose.Types.ObjectId;
+  unitId?: mongoose.Types.ObjectId;
+  monthlyRent?: number;
+  dueDate?: Date;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -20,8 +24,16 @@ const tenantSchema = new mongoose.Schema<TenantDoc, TenantModel>(
     phone: { type: String, required: true, trim: true },
     email: { type: String, lowercase: true, trim: true },
     notes: { type: String, trim: true },
+    propertyId: { type: mongoose.Schema.Types.ObjectId, ref: "Property" },
+    unitId: { type: mongoose.Schema.Types.ObjectId, ref: "Unit" },
+    monthlyRent: { type: Number },
+    dueDate: { type: Date },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 // tenantPlugin adds the orgId field (required, indexed) and tenant scoping.

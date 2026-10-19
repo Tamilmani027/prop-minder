@@ -33,7 +33,11 @@ const rentChargeSchema = new mongoose.Schema<RentChargeDoc, RentChargeModel>(
     dueDate: { type: Date, required: true },
     paidPaise: { type: Number, default: 0 },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 // tenantPlugin adds the orgId field (required, indexed) and tenant scoping.

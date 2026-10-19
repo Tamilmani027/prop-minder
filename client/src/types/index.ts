@@ -51,6 +51,10 @@ export interface Tenant {
   phone: string
   email?: string
   notes?: string
+  propertyId?: string
+  unitId?: string
+  monthlyRent?: number
+  dueDate?: string
   createdAt: string
   updatedAt: string
 }
@@ -143,6 +147,10 @@ export interface TenantInput {
   phone: string
   email?: string
   notes?: string
+  propertyId?: string
+  unitId?: string
+  monthlyRent?: number
+  dueDate?: string
 }
 
 export interface LeaseInput {

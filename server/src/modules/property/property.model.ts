@@ -19,7 +19,13 @@ const propertySchema = new mongoose.Schema<PropertyDoc, PropertyModel>(
     address: { type: String, required: true },
     city: { type: String, trim: true },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    // Serialize the `id` virtual (the `_id` as a hex string) so clients can
+    // read `.id` instead of relying on `_id`.
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 // tenantPlugin adds the orgId field (required, indexed) and tenant scoping.

@@ -23,7 +23,11 @@ const unitSchema = new mongoose.Schema<UnitDoc, UnitModel>(
     label: { type: String, required: true, trim: true },
     notes: { type: String, trim: true },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 // tenantPlugin adds the orgId field (required, indexed) and tenant scoping.

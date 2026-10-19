@@ -28,6 +28,9 @@ export const tenantSchema = z.object({
   phone: z.string().min(1, 'Phone is required'),
   email: z.string().email('Invalid email').optional(),
   notes: z.string().optional(),
+  propertyId: z.string().optional(),
+  monthlyRent: z.coerce.number().positive('Rent must be greater than 0').optional(),
+  dueDate: z.string().min(1, 'Due date is required'),
 })
 
 export const leaseSchema = z.object({

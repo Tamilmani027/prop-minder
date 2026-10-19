@@ -23,7 +23,11 @@ const userSchema = new mongoose.Schema<UserDoc, UserModel>(
     passwordHash: { type: String, required: true, select: false },
     role: { type: String, enum: ["owner", "manager"], default: "owner" },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 // Global unique index on email. Login happens before the org is known, so the lookup

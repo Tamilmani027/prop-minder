@@ -17,7 +17,11 @@ const organizationSchema = new mongoose.Schema<OrganizationDoc, OrganizationMode
     name: { type: String, required: true, trim: true },
     plan: { type: String, enum: ["free", "pro", "business"], default: "free" },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 export const Organization = mongoose.model<OrganizationDoc, OrganizationModel>(

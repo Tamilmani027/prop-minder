@@ -16,6 +16,10 @@ export const createController = async (_req: Request, res: Response) => {
     phone: string;
     email?: string;
     notes?: string;
+    propertyId?: string;
+    unitId?: string;
+    monthlyRent?: number;
+    dueDate?: string;
   };
   const tenant = await createTenant(orgId, input);
   res.status(201).json({ data: tenant });
