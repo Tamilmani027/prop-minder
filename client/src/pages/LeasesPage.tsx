@@ -181,7 +181,7 @@ export default function LeasesPage() {
 
       {open && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <Card className="w-full max-w-md">
+          <Card className="w-11/12 sm:max-w-md">
             <h2 className="text-lg font-bold text-[#1a1f1a] mb-4">New Lease</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="mb-4">
@@ -279,7 +279,7 @@ export default function LeasesPage() {
                 />
                 {errors.endDate && <p className="text-xs text-[#b34545] mt-1">{errors.endDate}</p>}
               </div>
-              <div className="flex justify-end gap-3 mt-6">
+              <div className="flex flex-col sm:flex-row gap-3 mt-6 sm:justify-end">
                 <Button variant="outline" onClick={() => setOpen(false)}>
                   Cancel
                 </Button>

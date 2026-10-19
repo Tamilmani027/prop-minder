@@ -27,7 +27,7 @@ export default function PropertyDetailPage() {
           <h1 className="text-2xl font-bold text-[#1a1f1a]">{property.name}</h1>
           <p className="text-[#5a6b5a] mt-1">{property.address}, {property.city}</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <Button
             onClick={() => navigate(`/properties/${id}/units/new`)}
             variant="primary"

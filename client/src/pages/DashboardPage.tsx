@@ -98,7 +98,7 @@ export default function DashboardPage() {
             Organization: {user?.orgId}
           </p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button className="px-3 py-2 bg-[#3d7a4f] text-white rounded-md text-sm hover:bg-[#356b44]">
             Generate Charges
           </button>
@@ -137,7 +137,7 @@ export default function DashboardPage() {
 
       <div className="mb-8">
         <h2 className="text-lg font-bold text-[#1a1f1a] mb-4">Status Breakdown</h2>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <Badge variant="paid">Paid: {data.counts.paid}</Badge>
           <Badge variant="partial">Partial: {data.counts.partial}</Badge>
           <Badge variant="overdue">Overdue: {data.counts.overdue}</Badge>

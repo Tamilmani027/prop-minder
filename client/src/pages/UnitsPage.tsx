@@ -58,7 +58,7 @@ export default function UnitsPage() {
           <h1 className="text-2xl font-bold text-[#1a1f1a]">Units</h1>
           <p className="text-[#5a6b5a] mt-1">Manage property units</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <Button onClick={() => setOpen(true)} variant="primary">
             <Plus className="h-4 w-4 mr-2" /> Add Unit
           </Button>
@@ -93,7 +93,7 @@ export default function UnitsPage() {
 
       {open && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <Card className="w-full max-w-md">
+          <Card className="w-11/12 sm:max-w-md">
             <h2 className="text-lg font-bold text-[#1a1f1a] mb-4">Add Unit</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <Input
@@ -109,7 +109,7 @@ export default function UnitsPage() {
                 value={formData.notes}
                 onChange={handleChange}
               />
-              <div className="flex justify-end gap-3 mt-6">
+              <div className="flex flex-col sm:flex-row gap-3 mt-6 sm:justify-end">
                 <Button variant="outline" onClick={() => setOpen(false)}>
                   Cancel
                 </Button>
