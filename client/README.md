@@ -1,32 +1,120 @@
-# React + TypeScript + Vite
+# PropMinder Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React frontend for the PropMinder property management platform.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Framework**: React 19
+- **Build tool**: Vite
+- **Language**: TypeScript
+- **Routing**: React Router DOM
+- **Data fetching**: TanStack Query (React Query)
+- **HTTP client**: Axios
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Validation**: Zod
+- **Linting**: Oxlint
 
-## React Compiler
+## Project structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```
+client/
+├── src/
+│   ├── main.tsx          # Entry point
+│   ├── App.tsx           # Route definitions
+│   ├── pages/            # Page components
+│   │   ├── LandingPage.tsx
+│   │   ├── LoginPage.tsx
+│   │   ├── RegisterPage.tsx
+│   │   ├── DashboardPage.tsx
+│   │   ├── PropertiesPage.tsx
+│   │   ├── PropertyDetailPage.tsx
+│   │   ├── UnitsPage.tsx
+│   │   ├── TenantsPage.tsx
+│   │   └── LeasesPage.tsx
+│   ├── components/
+│   │   ├── Navbar.tsx    # Layout + ProtectedRoute
+│   │   └── ui/           # Shared UI primitives (Button, Input, Card, Badge)
+│   ├── context/
+│   │   └── AuthContext.tsx   # Auth state + token management
+│   ├── hooks/
+│   │   └── useAuth.ts    # Auth hook
+│   ├── services/         # API service layer (Axios-based)
+│   │   ├── api.ts        # Axios instance + auth interceptor
+│   │   ├── authService.ts
+│   │   ├── propertyService.ts
+│   │   ├── unitService.ts
+│   │   ├── tenantService.ts
+│   │   ├── leaseService.ts
+│   │   └── rentService.ts
+│   ├── lib/
+│   │   ├── validation.ts # Client-side Zod schemas
+│   │   └── utils.ts
+│   └── types/            # TypeScript interfaces
+├── vite.config.ts        # Vite config (port 3000, /api/v1 proxy)
+├── package.json
+└── tsconfig.json
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Prerequisites
+
+- Node.js >= 20
+
+## Getting started
+
+### 1. Install dependencies
+
+```bash
+cd client
+npm install
+```
+
+### 2. Configure environment
+
+Create `client/.env`:
+
+```env
+VITE_API_BASE=http://localhost:4000/api/v1
+```
+
+### 3. Start the dev server
+
+```bash
+npm run dev
+```
+
+The client runs on `http://localhost:3000` and proxies `/api/v1` requests to `http://localhost:4000`.
+
+Make sure the server is running (see `../server/README.md`).
+
+## Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `npm run dev` | Start Vite dev server (port 3000) |
+| `npm run build` | Type-check + Vite production build |
+| `npm run lint` | Run Oxlint |
+| `npm run preview` | Preview production build |
+
+## Pages
+
+| Page | Path | Description |
+|------|------|-------------|
+| Landing | `/` | Public landing page |
+| Login | `/login` | Sign in |
+| Register | `/register` | Register a new organization |
+| Dashboard | `/dashboard` | Overview stats |
+| Properties | `/properties` | List properties; add property |
+| Property Detail | `/properties/:id` | View property + units |
+| Units | `/properties/:propertyId/units` | Manage units for a property |
+| Tenants | `/tenants` | List tenants; add tenant (optional property + unit) |
+| Leases | `/leases` | List leases; create lease (unit + tenant) |
+
+## Authentication
+
+The client stores the JWT in `localStorage` under the `token` key. The Axios instance (`src/lib/api.ts`) automatically attaches the `Authorization: Bearer <token>` header to every request. On a `401` response, the user is redirected to `/login`.
+
+## Notes
+
+- All money values are handled as integer paise on the server; the client displays them formatted with the ₹ symbol.
+- Tenant creation supports an optional Property → Unit dependent dropdown: selecting a property loads its units, and selecting a unit stores `unitId` on the tenant.
