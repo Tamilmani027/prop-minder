@@ -1,6 +1,6 @@
 # PropMinder
 
-Property management platform — a full-stack TypeScript application for managing properties, units, tenants, leases, and rent collection.
+Property management platform — a full-stack application for managing properties, units, tenants, leases, and rent collection.
 
 ## Overview
 

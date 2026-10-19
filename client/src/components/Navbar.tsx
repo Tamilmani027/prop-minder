@@ -1,7 +1,8 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { Button } from './ui/Button'
-import { LogOut, LayoutDashboard, Building2, Home, User, FileText } from 'lucide-react'
+import { LogOut, LayoutDashboard, Home, User, FileText } from 'lucide-react'
+import logo from '../assets/logo.svg'
 import { useEffect } from 'react'
 
 export function Navbar() {
@@ -16,9 +17,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 bg-[#3d7a4f] rounded-md flex items-center justify-center">
-              <Building2 className="w-4 h-4 text-white" />
-            </div>
+            <img src={logo} alt="PropMinder logo" className="w-14 h-14" />
             <span className="text-white font-semibold text-[17px] tracking-[-0.01em]">
               propminder
             </span>
@@ -29,10 +28,9 @@ export function Navbar() {
               to="/dashboard"
               end
               className={({ isActive }) =>
-                `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive
-                    ? 'text-white bg-[#3d7a4f]'
-                    : 'text-[#a8b5a8] hover:text-white'
+                `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive
+                  ? 'text-white bg-[#3d7a4f]'
+                  : 'text-[#a8b5a8] hover:text-white'
                 }`
               }
             >
@@ -41,10 +39,9 @@ export function Navbar() {
             <NavLink
               to="/properties"
               className={({ isActive }) =>
-                `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive
-                    ? 'text-white bg-[#3d7a4f]'
-                    : 'text-[#a8b5a8] hover:text-white'
+                `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive
+                  ? 'text-white bg-[#3d7a4f]'
+                  : 'text-[#a8b5a8] hover:text-white'
                 }`
               }
             >
@@ -53,10 +50,9 @@ export function Navbar() {
             <NavLink
               to="/tenants"
               className={({ isActive }) =>
-                `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive
-                    ? 'text-white bg-[#3d7a4f]'
-                    : 'text-[#a8b5a8] hover:text-white'
+                `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive
+                  ? 'text-white bg-[#3d7a4f]'
+                  : 'text-[#a8b5a8] hover:text-white'
                 }`
               }
             >
@@ -65,10 +61,9 @@ export function Navbar() {
             <NavLink
               to="/leases"
               className={({ isActive }) =>
-                `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive
-                    ? 'text-white bg-[#3d7a4f]'
-                    : 'text-[#a8b5a8] hover:text-white'
+                `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive
+                  ? 'text-white bg-[#3d7a4f]'
+                  : 'text-[#a8b5a8] hover:text-white'
                 }`
               }
             >

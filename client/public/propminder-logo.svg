@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .primary { fill: #000000; }
+      .secondary { fill: #ffffff; }
+    </style>
+  </defs>
+  
+  <!-- Background Container with Rounded Corners -->
+  <rect width="512" height="512" rx="112" class="primary" />
+  
+  <!-- Inner White Card / Shield Base -->
+  <rect x="64" y="64" width="384" height="384" rx="80" class="bg" />
+  
+  <!-- Architectural Building & Document / Key motif -->
+  <!-- Building Left Tower -->
+  <path d="M140 180h60v192h-60z" class="primary" />
+  
+  <!-- Building Right Tower (Taller) -->
+  <path d="M220 132h112v240H220z" class="primary" />
+  
+  <!-- Negative Space Windows on Right Tower -->
+  <rect x="244" y="156" width="24" height="32" rx="4" class="bg" />
+  <rect x="284" y="156" width="24" height="32" rx="4" class="bg" />
+  <rect x="244" y="212" width="24" height="32" rx="4" class="bg" />
+  <rect x="284" y="212" width="24" height="32" rx="4" class="bg" />
+  
+  <!-- Negative Space Windows on Left Tower -->
+  <rect x="158" y="204" width="24" height="28" rx="4" class="bg" />
+  <rect x="158" y="252" width="24" height="28" rx="4" class="bg" />
+  
+  <!-- Rent / Lease / Checkmark integration across the base -->
+  <path d="M120 396l56 56 160-160-28-28-132 132-28-28z" class="primary" />
+</svg>

@@ -14,6 +14,7 @@ import {
     FileText,
     BookOpen,
 } from 'lucide-react'
+import logo from '../assets/logo.svg'
 
 function cn(...classes: (string | boolean | undefined)[]) {
     return classes.filter(Boolean).join(' ')
@@ -44,11 +45,9 @@ function Navbar({
             <div className="max-w-[1200px] mx-auto px-8">
                 <div className="flex justify-between items-center h-[72px]">
                     <Link to="/" className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 bg-[#3d7a4f] rounded-md flex items-center justify-center">
-                            <Home className="w-4 h-4 text-white" />
-                        </div>
-                        <span className="text-white font-semibold text-[17px] tracking-[-0.01em]">
-                            propminder
+                        <img src={logo} alt="PropMinder logo" className="w-14 h-14" />
+                        <span className="text-white font-bold text-[20px] tracking-[-0.01em]">
+                            PropMinder
                         </span>
                     </Link>
 
@@ -751,9 +750,7 @@ function Footer() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
                     <div className="col-span-2 md:col-span-1">
                         <div className="flex items-center gap-2.5 mb-4">
-                            <div className="w-7 h-7 bg-[#3d7a4f] rounded-md flex items-center justify-center">
-                                <Home className="w-4 h-4 text-white" />
-                            </div>
+                            <img src={logo} alt="PropMinder logo" className="w-7 h-7" />
                             <span className="text-white font-semibold text-[17px] tracking-[-0.01em]">
                                 propminder
                             </span>
